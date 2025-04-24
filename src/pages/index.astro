@@ -1,11 +1,66 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import MainLayout from '../layouts/MainLayout.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<MainLayout title="Welcome to My Portfolio">
+	<section class="py-20">
+		<div class="max-w-4xl mx-auto text-center">
+			<h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+				Hi, I'm Your Name
+			</h1>
+			<h2 class="text-2xl md:text-3xl text-gray-600 mb-8">
+				Full Stack Developer | Web Designer | Problem Solver
+			</h2>
+			<p class="text-lg text-gray-600 mb-8">
+				I create beautiful, functional websites and applications that make a difference.
+				With expertise in modern web technologies and a passion for clean code,
+				I help businesses bring their digital ideas to life.
+			</p>
+			<div class="space-x-4">
+				<a
+					href="/projects"
+					class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+				>
+					View My Work
+				</a>
+				<a
+					href="/contact"
+					class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-300 transition-colors"
+				>
+					Get in Touch
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-20 bg-white">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-3xl font-bold text-center mb-12">Featured Skills</h2>
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+				<div class="text-center">
+					<div class="text-4xl mb-4">🚀</div>
+					<h3 class="font-semibold">Frontend</h3>
+					<p class="text-gray-600">React, Vue, Astro</p>
+				</div>
+				<div class="text-center">
+					<div class="text-4xl mb-4">⚡</div>
+					<h3 class="font-semibold">Backend</h3>
+					<p class="text-gray-600">Node.js, Python</p>
+				</div>
+				<div class="text-center">
+					<div class="text-4xl mb-4">🎨</div>
+					<h3 class="font-semibold">Design</h3>
+					<p class="text-gray-600">UI/UX, Figma</p>
+				</div>
+				<div class="text-center">
+					<div class="text-4xl mb-4">🔧</div>
+					<h3 class="font-semibold">Tools</h3>
+					<p class="text-gray-600">Git, Docker</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</MainLayout>
