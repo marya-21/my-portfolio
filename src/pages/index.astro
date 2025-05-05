@@ -1,8 +1,69 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+interface Experience {
+  header: string;
+  company: string;
+  position: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+}
+
+interface SocialMedia {
+  platform: string;
+  url: string;
+}
+
+interface PersonalInfo {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  socialMedia: SocialMedia[];
+}
+
+const experiences: Experience[] = [
+  {
+    header: "Curren Position",
+    company: "PT. Indodev Niaga Internet",
+    position: "FrontEnd Developer",
+    startDate: "2022",
+    endDate: "Present",
+    description: "Developing Sunfish HRIS and CRM.",
+  },
+  {
+    header: "Previous Position",
+    company: "Talknow ID",
+    position: "Web Developer",
+    startDate: "2021",
+    endDate: "2021",
+    description:
+      "Create websites, mobile responsive websites and website landing pages.",
+  },
+  {
+    header: "Education",
+    company: "Pamulang University",
+    position: "Computer Science",
+    startDate: "2015",
+    endDate: "2020",
+    description: "Bachelor's degree in Computer Science",
+  },
+];
+
+const personalInfo: PersonalInfo = {
+  name: "M. Arya Syaiifullah",
+  email: "aryasyaiifullah@gmail.com",
+  phone: "081234567890",
+  address: "South Tangerang, Banten, Indonesia",
+  socialMedia: [
+    { platform: "linkedin", url: "https://linkedin.com/in/your-profile" },
+    { platform: "github", url: "https://github.com/your-username" },
+    { platform: "twitter", url: "https://twitter.com/your-handle" },
+  ],
+};
+
+const fullName = "M. Arya Syaiifullah";
 ---
 
 <MainLayout title="My Portfolio">
@@ -10,15 +71,17 @@ import MainLayout from "../layouts/MainLayout.astro";
   <section id="home" class="py-20">
     <div class="max-w-4xl mx-auto text-center">
       <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-        Hi, I'm Your Name
+        Hi, {fullName}
       </h1>
       <h2 class="text-2xl md:text-3xl text-gray-600 mb-8">
-        Full Stack Developer | Web Designer | Problem Solver
+        Full Stack Developer | Web Designer
       </h2>
       <p class="text-lg text-gray-600 mb-8">
-        I create beautiful, functional websites and applications that make a
-        difference. With expertise in modern web technologies and a passion for
-        clean code, I help businesses bring their digital ideas to life.
+        I'm a Front-End Developer with a background in Computer Science. I
+        create responsive interfaces using HTML, CSS, JavaScript, ReactJS, and
+        NEXTJS. I optimize performance with tools like Vite, tailwind, Docker,
+        and Git, focusing on enhancing user experiences and meeting business
+        goals.
       </p>
       <div class="space-x-4">
         <a
@@ -50,7 +113,7 @@ import MainLayout from "../layouts/MainLayout.astro";
         <div class="text-center">
           <div class="text-4xl mb-4">⚡</div>
           <h3 class="font-semibold">Backend</h3>
-          <p class="text-gray-600">Node.js, Python</p>
+          <p class="text-gray-600">Node.js, strapi</p>
         </div>
         <div class="text-center">
           <div class="text-4xl mb-4">🎨</div>
@@ -82,14 +145,17 @@ import MainLayout from "../layouts/MainLayout.astro";
         <div>
           <h2 class="text-2xl font-semibold mb-4">My Journey</h2>
           <p class="text-gray-600 mb-4">
-            I'm a passionate developer with a strong background in web
-            technologies. My journey in tech started [X years] ago when I
-            discovered my love for creating digital solutions that make a real
-            impact.
+            I'm a passionate Front-End Developer with a strong background in web
+            technologies. My journey in tech started 3 years ago when I
+            discovered my love for creating responsive and user-friendly digital
+            solutions.
           </p>
           <p class="text-gray-600">
-            I specialize in building modern, responsive web applications using
-            cutting-edge technologies and best practices.
+            I specialize in building modern web applications, focusing on
+            automation, test cases, and test scenarios. I use cutting-edge
+            technologies like HTML, CSS, tailwind, JavaScript, ReactJS, and
+            NEXTJS, following best practices to ensure quality, performance, and
+            seamless user experiences.
           </p>
         </div>
       </div>
@@ -97,27 +163,18 @@ import MainLayout from "../layouts/MainLayout.astro";
       <div class="mb-16">
         <h2 class="text-2xl font-semibold mb-6">Education & Experience</h2>
         <div class="space-y-6">
-          <div class="border-l-4 border-blue-500 pl-4">
-            <h3 class="text-xl font-semibold">Current Position</h3>
-            <p class="text-gray-600">Company Name • 2022 - Present</p>
-            <p class="text-gray-600 mt-2">
-              Description of your role and achievements...
-            </p>
-          </div>
-          <div class="border-l-4 border-blue-500 pl-4">
-            <h3 class="text-xl font-semibold">Previous Position</h3>
-            <p class="text-gray-600">Company Name • 2020 - 2022</p>
-            <p class="text-gray-600 mt-2">
-              Description of your role and achievements...
-            </p>
-          </div>
-          <div class="border-l-4 border-blue-500 pl-4">
-            <h3 class="text-xl font-semibold">Education</h3>
-            <p class="text-gray-600">University Name • Degree • 2016 - 2020</p>
-            <p class="text-gray-600 mt-2">
-              Description of your education and achievements...
-            </p>
-          </div>
+          {
+            experiences.map((experience) => (
+              <div class="border-l-4 border-blue-500 pl-4">
+                <h3 class="text-xl font-semibold">{experience.header}</h3>
+                <p class="text-gray-600">
+                  {experience.company} • {experience.startDate} -{" "}
+                  {experience.endDate}
+                </p>
+                <p class="text-gray-600 mt-2">{experience.description}</p>
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>
