@@ -1,0 +1,34 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout title="404 - Page Not Found">
+  <div class="h-screen text-center px-4 max-w-lg mx-auto">
+    <h1 class="text-[150px] font-bold text-gray-200 leading-tight">404</h1>
+    <h2 class="text-3xl font-bold text-gray-800 mb-4">Oops! Page Not Found</h2>
+    <p class="text-gray-600 mb-8">
+      Looks like you've ventured into uncharted territory. The page you're
+      looking for might have moved, changed its name, or is temporarily
+      unavailable.
+    </p>
+
+    <div class="space-y-4">
+      <a
+        href="/"
+        class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+      >
+        Back to Homepage
+      </a>
+
+      <p class="text-sm text-gray-500">
+        If you think this is a mistake, feel free to <a
+          href="#contact"
+          class="text-blue-600 hover:underline">contact us</a
+        >.
+      </p>
+    </div>
+
+    <!-- Fun 404 Animation -->
+    <div class="mt-12 text-6xl animate-bounce">🚀</div>
+  </div>
+</MainLayout>

@@ -3,7 +3,24 @@ interface Props {
   title: string;
 }
 
+interface Portfolio {
+  url: string;
+  socialMedia: string;
+}
+
 const { title } = Astro.props;
+const fullName = "M. Arya Syaiifullah";
+const currentYear = getCurrentYear();
+
+function getCurrentYear(): number {
+  return new Date().getFullYear();
+}
+
+const portfolio: Portfolio[] = [
+  { url: "Linkedin", socialMedia: "#" },
+  { url: "Github", socialMedia: "#" },
+  { url: "Twitter", socialMedia: "#" },
+];
 ---
 
 <!doctype html>
@@ -20,7 +37,7 @@ const { title } = Astro.props;
     <header class="bg-white shadow-sm">
       <nav class="container mx-auto px-4 py-4">
         <div class="flex justify-between items-center">
-          <a href="/" class="text-xl font-bold text-gray-800">Portfolio</a>
+          <a href="/" class="text-xl font-bold text-gray-800">{fullName}</a>
           <div class="space-x-4">
             <a href="#home" class="text-gray-600 hover:text-gray-900">Home</a>
             <a href="#about" class="text-gray-600 hover:text-gray-900">About</a>
@@ -42,11 +59,15 @@ const { title } = Astro.props;
     <footer class="bg-gray-800 text-white py-8">
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center">
-          <p>&copy; 2024 Your Name. All rights reserved.</p>
+          <p>&copy; {currentYear} {fullName}. All rights reserved.</p>
           <div class="space-x-4">
-            <a href="#" class="hover:text-gray-300">LinkedIn</a>
-            <a href="#" class="hover:text-gray-300">GitHub</a>
-            <a href="#" class="hover:text-gray-300">Twitter</a>
+            {
+              portfolio.map((item) => (
+                <a href={item.socialMedia} class="hover:text-gray-300">
+                  {item.url}
+                </a>
+              ))
+            }
           </div>
         </div>
       </div>
